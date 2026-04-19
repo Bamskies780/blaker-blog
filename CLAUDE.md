@@ -29,6 +29,14 @@ npm run preview   # preview production build locally
 
 **RSS**: Auto-generated at `/rss.xml` via `src/pages/rss.xml.js`.
 
+## Current state (as of 2026-04-18)
+
+- Scaffolded and running locally (`npm run dev` confirmed clean)
+- Repo live at https://github.com/Bamskies780/blaker-blog (public, `master` branch)
+- **Template content is still in place** — `src/content/blog/` has the Astro sample posts, `src/pages/index.astro` / `about.astro` have placeholder copy. These need to be stripped before going live.
+- Netlify not yet connected to this repo — a separate coming-soon page is live via Netlify Drop. Next step is to wire up Netlify CI to this GitHub repo and replace the Drop deploy.
+- `site:` in `astro.config.mjs` is still set to `https://example.com` — needs updating to `https://blaker.blog`
+
 ## Key constraints
 
 - All prose and copy is written by the owner — do not generate blog content, bio text, or homepage copy.
