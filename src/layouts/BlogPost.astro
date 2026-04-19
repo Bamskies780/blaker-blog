@@ -1,13 +1,18 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = {
+	title: string;
+	description: string;
+	pubDate?: Date;
+	updatedDate?: Date;
+	showDate?: boolean;
+};
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, pubDate, updatedDate, showDate = true } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -62,7 +67,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 						<h1>{title}</h1>
 						<div class="byline">
 							<a class="byline-link" href="/">
-								Blake McLemore · <FormattedDate date={pubDate} />
+								Blake McLemore{showDate && pubDate && <> · <FormattedDate date={pubDate} /></>}
 							</a>
 							{
 								updatedDate && (

@@ -21,25 +21,34 @@ npm run preview   # preview production build locally
 
 **Content**: Blog posts live in `src/content/blog/` as `.md`/`.mdx` files. The collection schema is defined in `src/content.config.ts`. Slugs are file-name derived; the catch-all route `src/pages/blog/[...slug].astro` renders them using `src/layouts/BlogPost.astro`.
 
-**Layouts & components**: `BaseHead.astro` handles shared `<head>` metadata and imports `src/styles/global.css`. `Header.astro` + `Footer.astro` now share the same social destinations (Instagram + LinkedIn). Blog post pages are rendered by `src/layouts/BlogPost.astro` with title-first metadata and no hero image.
+**Pages**: Current routes:
+- `/` — home (`src/pages/index.astro`) — placeholder copy, needs owner-written content
+- `/blog` — post index (`src/pages/blog/index.astro`)
+- `/bio` — about page (`src/pages/bio.astro`) — previously `about.astro`, renamed
+- `/projects` — projects page (`src/pages/projects.astro`) — `showDate={false}` on byline
+- `/contact` — contact form (`src/pages/contact.astro`) — Netlify form, uses `pubDate={new Date()}`
+
+**Layouts & components**: `BaseHead.astro` handles shared `<head>` metadata, imports `src/styles/global.css`, and runs an inline theme-init script before paint. `Header.astro` has an icon-based light/dark toggle (sun/moon + sliding thumb, `aria-pressed`, persisted via `localStorage`). `Footer.astro` social links: Instagram + LinkedIn. Blog post pages rendered by `src/layouts/BlogPost.astro` — title-first byline (`Title → Blake McLemore · date`), no hero image.
+
+**Theme**: Light/dark mode via `data-theme` attribute on `<html>`. CSS variables for all colors defined in `:root` and `:root[data-theme='dark']` blocks in `global.css`. Init script in `BaseHead.astro` reads `localStorage` then system preference to avoid flash.
 
 **Site metadata**: Shared constants (site title, description) are in `src/consts.ts`.
 
-**Fonts**: Typography is loaded via `@fontsource` imports in `src/styles/global.css` (`@fontsource/stix-two-text` for body/headings and `@fontsource-variable/geist-mono` for code). The previous local Atkinson font pipeline was removed.
+**Fonts**: `@fontsource/stix-two-text` (400, 500) for body/headings; `@fontsource-variable/geist-mono` for code. Imported at top of `src/styles/global.css`. Local Atkinson woff pipeline removed.
 
 **RSS**: Auto-generated at `/rss.xml` via `src/pages/rss.xml.js`.
 
-## Current state (as of 2026-04-18)
+## Current state (as of 2026-04-19)
 
-- Scaffolded and running locally (`npm run dev` confirmed clean)
+- Running locally (`npm run dev` confirmed clean)
 - Repo live at https://github.com/Bamskies780/blaker-blog (public, `master` branch)
 - Site title in header is `blaker.blog` (set in `src/consts.ts`)
-- Global type scale and spacing were tuned toward the Lee Robinson editorial look (STIX Two Text, narrower reading column, softer headings/lists)
-- Blog post header now shows `Title -> Blake McLemore · date` (name/date link to home) and no longer renders the large hero image
-- Header and footer social links are aligned to Instagram + LinkedIn
-- **Template content is still in place** — `src/content/blog/` has the Astro sample posts, `src/pages/index.astro` / `about.astro` have placeholder copy. These need to be stripped before going live.
-- Netlify not yet connected to this repo — a separate coming-soon page is live via Netlify Drop. Next step is to wire up Netlify CI to this GitHub repo and replace the Drop deploy.
-- `site:` in `astro.config.mjs` is still set to `https://example.com` — needs updating to `https://blaker.blog`
+- Light/dark toggle live in header, persisted
+- Structural pages added: `/bio`, `/projects`, `/contact` (Netlify form)
+- `about.astro` renamed to `bio.astro`
+- **Template content is still in place** — `src/content/blog/` has Astro sample posts; `src/pages/index.astro` and `/bio` have placeholder copy. Strip before going live.
+- Netlify not yet connected to this repo — a separate coming-soon page is live via Netlify Drop. Next step: wire up Netlify CI to GitHub repo and replace the Drop deploy.
+- `site:` in `astro.config.mjs` is still `https://example.com` — needs updating to `https://blaker.blog`
 
 ## Key constraints
 
