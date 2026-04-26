@@ -1,0 +1,5 @@
+[31m[1m15:51:22[22m [ERROR] [glob-loader][39m Error reading first-post.md: ENOENT: no such file or directory, open 'C:\Users\blake\Documents\blaker.blog_Site\src\content\blog\first-post.md'
+[31m[1m15:51:22[22m [ERROR] [glob-loader][39m Error reading markdown-style-guide.md: ENOENT: no such file or directory, open 'C:\Users\blake\Documents\blaker.blog_Site\src\content\blog\markdown-style-guide.md'
+[31m[1m15:51:22[22m [ERROR] [glob-loader][39m Error reading second-post.md: ENOENT: no such file or directory, open 'C:\Users\blake\Documents\blaker.blog_Site\src\content\blog\second-post.md'
+[31m[1m15:51:22[22m [ERROR] [glob-loader][39m Error reading third-post.md: ENOENT: no such file or directory, open 'C:\Users\blake\Documents\blaker.blog_Site\src\content\blog\third-post.md'
+[31m[1m15:51:22[22m [ERROR] [glob-loader][39m Error reading using-mdx.mdx: ENOENT: no such file or directory, open 'C:\Users\blake\Documents\blaker.blog_Site\src\content\blog\using-mdx.mdx'
