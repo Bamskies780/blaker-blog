@@ -7,9 +7,17 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
+const FEATURED_POST_ID = 'why-am-i-starting-a-blog-in-2026';
+
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const featuredPostIndex = posts.findIndex((post) => post.id === FEATURED_POST_ID);
+if (featuredPostIndex > 0) {
+	const [featuredPost] = posts.splice(featuredPostIndex, 1);
+	posts.unshift(featuredPost);
+}
 ---
 
 <!doctype html>
