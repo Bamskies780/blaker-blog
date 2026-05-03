@@ -27,9 +27,9 @@ The blog index in `src/pages/blog/index.astro` sorts posts by `pubDate`, but the
 - `/` - home (`src/pages/index.astro`) - owner-written homepage blurb is in place
 - `/blog` - post index (`src/pages/blog/index.astro`)
 - `/blog/why-am-i-starting-a-blog-in-2026/` - first published post, intentionally pinned on blog index
-- `/bio` - about page (`src/pages/bio.astro`) - still placeholder copy
 - `/projects` - projects page (`src/pages/projects.astro`) - `showDate={false}` on byline
 - `/contact` - contact form (`src/pages/contact.astro`) - Netlify form, uses `pubDate={new Date()}`
+- `bio.astro` still exists in `src/pages/` but is orphaned — removed from nav, no links to it. Can be deleted.
 
 **Layouts & components**: `BaseHead.astro` handles shared `<head>` metadata, imports `src/styles/global.css`, and runs an inline theme-init script before paint. `Header.astro` uses `Home / Blog / Projects / Contact`. `Footer.astro` includes Instagram, LinkedIn, and a "Get in touch" link. Blog post pages rendered by `src/layouts/BlogPost.astro` use the title-first byline (`Title -> Blake McLemore · date`) and no hero image in the post body.
 
@@ -57,6 +57,7 @@ Optional layers, **not currently implemented** — only wire up if the owner ask
 
 ## Current state (as of 2026-05-02)
 
+- **Site is LIVE at [blaker.blog](https://blaker.blog)** — domain cutover complete, HTTPS active
 - Netlify is Git-connected; pushes to `master` auto-deploy to production
 - Site title in header is `blaker.blog` (set in `src/consts.ts`)
 - Light/dark toggle is live in the header and persisted
@@ -66,17 +67,12 @@ Optional layers, **not currently implemented** — only wire up if the owner ask
 - Astro sample blog posts were removed from `src/content/blog/`
 - The "why am I starting a blog" post is pinned as the featured large card on `/blog`, even after future posts are added
 - Contact form on `/contact` posts via Netlify Forms. A static `public/__forms.html` mirror ensures form detection at build time. After submission, Netlify redirects to `/thanks` (rendered by `src/pages/thanks.astro`)
-- `/bio` still contains placeholder copy and should be replaced before going live
-- `site:` in `astro.config.mjs` is still `https://example.com` - needs updating to `https://blaker.blog`
+- Bio page removed from nav — `bio.astro` still exists in `src/pages/` but is orphaned (no links to it)
+- `site:` in `astro.config.mjs` is set to `https://blaker.blog` ✅
 
 ## Next steps
 
-- Update `site:` in `astro.config.mjs` from `https://example.com` to `https://blaker.blog`
-- Confirm `blaker.blog` is set as the production domain in Netlify
-- DNS approach (verify which is in use):
-  - If external DNS, Netlify docs prefer `www.blaker.blog` as primary with apex redirecting to it
-  - If Netlify DNS, `blaker.blog` can be the primary domain directly
-- Replace placeholder copy on `/bio` (owner-written)
+- Delete orphaned `src/pages/bio.astro` (no nav link, no content — safe to remove)
 
 ## Key constraints
 
