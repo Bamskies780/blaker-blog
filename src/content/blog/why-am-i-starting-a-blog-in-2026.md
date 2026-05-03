@@ -13,4 +13,4 @@ A podcast would be too much of a time-suck, and I would not be able to withstand
 
 While we are on the topic of AI. Like I mentioned on [the landing page](/), AI will not be responsible for writing anything you read on this site. The technology is cool and all, and I have relied heavily on it to build the site and some projects I am working on, but at this rate, the human race is going to be dumb as hell pretty quick.
 
-That's why I am un-officially becoming the first Gen Xer to start a blog. Ever. In the year 2026.
+That's why I am un-officially becoming the first Gen Zer to start a blog. Ever. In the year 2026.
