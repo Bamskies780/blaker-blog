@@ -47,6 +47,18 @@ npm run preview   # preview production build locally
 - Netlify is not yet connected to this repo
 - `astro.config.mjs` still uses `https://example.com` for `site:`
 
+## Next steps
+
+- Update `site:` in `astro.config.mjs` to `https://blaker.blog`
+- Connect the GitHub repo to Netlify
+- Set Netlify production branch to `master`
+- Netlify build command: `npm run build`
+- Netlify publish directory: `dist`
+- Add `blaker.blog` as the production domain
+- If keeping external DNS, prefer `www.blaker.blog` as primary per Netlify guidance
+- Use pull request Deploy Previews for feature branches
+- Merge to `master` to publish live
+
 ## Response style
 
 - Be concise and direct

@@ -75,3 +75,12 @@ Error: Failed to load url astro:server-app.js (resolved id: astro:server-app.js)
 [2m15:55:38[22m [34m[200][39m / [2m6ms[22m
 [2m17:07:42[22m [34m[watch][39m /src/styles/global.css
 [2m17:07:45[22m [34m[watch][39m /src/styles/global.css
+[vite] program reload
+[vite] program reload
+[2m17:17:36[22m [34m[glob-loader][39m Reloaded data from [32mwhy-am-i-starting-a-blog-in-2026.md[39m
+[2m17:17:36[22m [34m[glob-loader][39m Reloaded data from [32mwhy-am-i-starting-a-blog-in-2026.md[39m
+[vite] program reload
+[vite] program reload
+[vite] program reload
+[2m20:09:23[22m [34m[watch][39m public/__forms.html
+[2m20:18:43[22m [34m[watch][39m /src/styles/global.css

@@ -56,6 +56,21 @@ The blog index in `src/pages/blog/index.astro` sorts posts by `pubDate`, but the
 - Netlify is not yet connected to this repo - a separate coming-soon page is live via Netlify Drop. Next step is to wire up Netlify CI to the GitHub repo and replace the Drop deploy.
 - `site:` in `astro.config.mjs` is still `https://example.com` - needs updating to `https://blaker.blog`
 
+## Next steps
+
+- First code change before launch: update `site:` in `astro.config.mjs` from `https://example.com` to `https://blaker.blog`
+- Connect the GitHub repo to Netlify as a Git-backed site
+- Set Netlify production branch to `master`
+- Use `npm run build` as the build command and `dist` as the publish directory
+- Add `blaker.blog` as the production domain in Netlify
+- Decide DNS approach:
+  - If keeping external DNS, Netlify docs prefer `www.blaker.blog` as primary and apex redirecting to it
+  - If using Netlify DNS, `blaker.blog` can be the primary domain directly
+- Recommended workflow after launch:
+  - `master` deploys production
+  - feature branches should be reviewed with Netlify Deploy Preview URLs from pull requests
+  - merge to `master` when ready to publish live
+
 ## Key constraints
 
 - All prose and copy is written by the owner - do not generate blog content, bio text, or homepage copy.
