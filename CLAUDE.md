@@ -41,35 +41,42 @@ The blog index in `src/pages/blog/index.astro` sorts posts by `pubDate`, but the
 
 **RSS**: Auto-generated at `/rss.xml` via `src/pages/rss.xml.js`.
 
-## Current state (as of 2026-04-26)
+## Staging a new blog post
 
-- Remote GitHub `master` is up to date with the changes made in this session
+`master` is wired to Netlify and auto-deploys to production. To stage a post (or any other change) before it goes live, use Netlify Deploy Previews:
+
+1. Create a branch — e.g. `post/<slug>`.
+2. Add the `.md`/`.mdx` file under `src/content/blog/` and commit on the branch.
+3. Push the branch and open a PR against `master`. Netlify auto-builds a Deploy Preview at `deploy-preview-<n>--<site-name>.netlify.app`.
+4. Use the Deploy Preview URL to verify the post renders, internal links work, the blog index slot is correct, and RSS picks it up. Backlinks use relative paths, so anything that works on the preview will work on prod.
+5. Merge to `master` to publish live.
+
+Optional layers, **not currently implemented** — only wire up if the owner asks:
+- `draft: true` frontmatter flag, filtered out at build time, for keeping unfinished work in `master` without publishing.
+- `pubDate > now` filtering for scheduled publishing.
+
+## Current state (as of 2026-05-02)
+
+- Netlify is Git-connected; pushes to `master` auto-deploy to production
 - Site title in header is `blaker.blog` (set in `src/consts.ts`)
 - Light/dark toggle is live in the header and persisted
 - Structural pages exist for `/bio`, `/projects`, and `/contact`
-- Homepage now contains owner-written blurb in `src/pages/index.astro`
-- First real post now lives at `src/content/blog/why-am-i-starting-a-blog-in-2026.md`
-- That first post uses a custom thumbnail asset at `src/assets/why-am-i-starting-a-blog-in-2026-thumbnail.svg`
+- Homepage contains owner-written blurb in `src/pages/index.astro`
+- First real post lives at `src/content/blog/why-am-i-starting-a-blog-in-2026.md` and uses a custom thumbnail at `src/assets/why-am-i-starting-a-blog-in-2026-thumbnail.svg`
 - Astro sample blog posts were removed from `src/content/blog/`
 - The "why am I starting a blog" post is pinned as the featured large card on `/blog`, even after future posts are added
+- Contact form on `/contact` posts via Netlify Forms. A static `public/__forms.html` mirror ensures form detection at build time. After submission, Netlify redirects to `/thanks` (rendered by `src/pages/thanks.astro`)
 - `/bio` still contains placeholder copy and should be replaced before going live
-- Netlify is not yet connected to this repo - a separate coming-soon page is live via Netlify Drop. Next step is to wire up Netlify CI to the GitHub repo and replace the Drop deploy.
 - `site:` in `astro.config.mjs` is still `https://example.com` - needs updating to `https://blaker.blog`
 
 ## Next steps
 
-- First code change before launch: update `site:` in `astro.config.mjs` from `https://example.com` to `https://blaker.blog`
-- Connect the GitHub repo to Netlify as a Git-backed site
-- Set Netlify production branch to `master`
-- Use `npm run build` as the build command and `dist` as the publish directory
-- Add `blaker.blog` as the production domain in Netlify
-- Decide DNS approach:
-  - If keeping external DNS, Netlify docs prefer `www.blaker.blog` as primary and apex redirecting to it
-  - If using Netlify DNS, `blaker.blog` can be the primary domain directly
-- Recommended workflow after launch:
-  - `master` deploys production
-  - feature branches should be reviewed with Netlify Deploy Preview URLs from pull requests
-  - merge to `master` when ready to publish live
+- Update `site:` in `astro.config.mjs` from `https://example.com` to `https://blaker.blog`
+- Confirm `blaker.blog` is set as the production domain in Netlify
+- DNS approach (verify which is in use):
+  - If external DNS, Netlify docs prefer `www.blaker.blog` as primary with apex redirecting to it
+  - If Netlify DNS, `blaker.blog` can be the primary domain directly
+- Replace placeholder copy on `/bio` (owner-written)
 
 ## Key constraints
 
