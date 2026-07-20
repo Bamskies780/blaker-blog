@@ -10,11 +10,12 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	appStoreId?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, appStoreId } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -38,6 +39,9 @@ const { title, description, image = FallbackImage } = Astro.props;
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Smart App Banner (iOS Safari) - rendered only when a page passes appStoreId -->
+{appStoreId && <meta name="apple-itunes-app" content={`app-id=${appStoreId}`} />}
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
