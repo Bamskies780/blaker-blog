@@ -10,14 +10,15 @@ type Props = {
 	pubDate?: Date;
 	updatedDate?: Date;
 	showDate?: boolean;
+	appStoreId?: string;
 };
 
-const { title, description, pubDate, updatedDate, showDate = true } = Astro.props as Props;
+const { title, description, pubDate, updatedDate, showDate = true, appStoreId } = Astro.props as Props;
 ---
 
 <html lang="en">
 	<head>
-		<BaseHead title={title} description={description} />
+		<BaseHead title={title} description={description} appStoreId={appStoreId} />
 		<style>
 			main {
 				width: calc(100% - 2em);

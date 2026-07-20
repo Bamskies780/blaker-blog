@@ -1,13 +1,106 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+
+const APP_STORE_URL =
+	'https://apps.apple.com/us/app/yardguard-weed-id-removal/id6762166580';
 ---
 
-<Layout title="Projects" description="Projects page" showDate={false}>
-	<p>I'm working on it. Stay tuned.</p>
-	<img
-		src="/images/let-him-cook.gif"
-		alt="hold up, let him cook"
-		class="mt-8 w-full max-w-md mx-auto"
-		loading="lazy"
-	/>
+<Layout
+	title="Projects"
+	description="Projects page"
+	showDate={false}
+	appStoreId="6762166580"
+>
+	<section class="project">
+		<a
+			class="project-icon-link"
+			href={APP_STORE_URL}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="Download YardGuard on the App Store"
+		>
+			<img
+				src="/images/yardguard-icon.png"
+				alt="YardGuard app icon"
+				class="project-icon"
+				width="120"
+				height="120"
+				loading="lazy"
+			/>
+		</a>
+
+		<h2 class="project-title">YardGuard: Weed ID &amp; Removal</h2>
+
+		<p>
+			In January of 2025, I bought my first house. This means I am now solely
+			responsible for a yard with a flowerbed. Some people's green thumb comes
+			natural, some are comfortable "winging" their yard care. I don't fall into
+			either category. I got tired of using Google and ChatGPT to ask for
+			lawncare advice because the information on both of these platforms can be
+			inconsistent and very overwhelming to someone just trying to get started.
+			This app makes weed identification and plant care instructions as simple as
+			snapping a picture and getting consistent and repeatable advice. The app
+			also, tells you exactly what lawncare supplies you need and gives you
+			convenient Amazon links. I learned a lot throughout this process and plan
+			to write a separate piece on the journey at some point.
+		</p>
+
+		<p class="project-tagline">
+			Don't let lawncare overwhelm you. Try YardGuard today!
+		</p>
+
+		<a
+			class="project-cta"
+			href={APP_STORE_URL}
+			target="_blank"
+			rel="noopener noreferrer"
+		>
+			Download on the App Store
+		</a>
+	</section>
 </Layout>
+
+<style>
+	.project {
+		text-align: center;
+	}
+	.project-icon-link {
+		display: inline-block;
+		border: none;
+	}
+	.project-icon {
+		width: 120px;
+		height: 120px;
+		border-radius: 22%;
+		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+		transition: transform 0.15s ease;
+	}
+	.project-icon-link:hover .project-icon {
+		transform: scale(1.03);
+	}
+	.project-title {
+		margin: 0.75em 0 0.5em;
+	}
+	.project p {
+		text-align: left;
+	}
+	.project-tagline {
+		text-align: center !important;
+		font-style: italic;
+		color: rgb(var(--gray));
+	}
+	.project-cta {
+		display: inline-block;
+		margin-top: 0.5em;
+		padding: 0.6em 1.2em;
+		border-radius: 8px;
+		background: rgb(var(--gray-dark));
+		color: rgb(var(--gray-light));
+		text-decoration: none;
+		font-weight: 500;
+	}
+	.project-cta:hover {
+		text-decoration: none;
+		opacity: 0.9;
+	}
+</style>
